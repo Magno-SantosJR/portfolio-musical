@@ -1,0 +1,53 @@
+[debug] [2026-06-29T01:03:13.381Z] ----------------------------------------------------------------------
+[debug] [2026-06-29T01:03:13.384Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\a\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting:github
+[debug] [2026-06-29T01:03:13.385Z] CLI Version:   15.22.3
+[debug] [2026-06-29T01:03:13.385Z] Platform:      win32
+[debug] [2026-06-29T01:03:13.385Z] Node Version:  v22.19.0
+[debug] [2026-06-29T01:03:13.386Z] Detected Agent: unknown
+[debug] [2026-06-29T01:03:13.386Z] Time:          Sun Jun 28 2026 22:03:13 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-29T01:03:13.386Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Projetos\Portfólio\Magno Pizon\magno_pizon
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-06-29T01:03:30.200Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-29T01:03:30.201Z] > authorizing via signed-in user (ma9nojr@gmail.com)
+[debug] [2026-06-29T01:03:30.203Z] Checked if tokens are valid: true, expires at: 1782696669663
+[debug] [2026-06-29T01:03:30.204Z] Checked if tokens are valid: true, expires at: 1782696669663
+[debug] [2026-06-29T01:03:30.206Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2026-06-29T01:03:31.008Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-06-29T01:03:31.008Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] 
+=== Hosting:github Setup
+[info] 
+[info] i  Detected a .git folder at D:\Projetos\Portfólio\Magno Pizon\magno_pizon\portfolio-musical 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=513609969&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2026-06-29T01:03:34.109Z] Error: spawn cmd ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[error] 
+[error] Error: An unexpected error has occurred.
