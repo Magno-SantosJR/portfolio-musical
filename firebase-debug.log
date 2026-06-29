@@ -51,3 +51,78 @@ Before we get started, keep in mind:
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2026-06-29T01:08:04.171Z] ----------------------------------------------------------------------
+[debug] [2026-06-29T01:08:04.175Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\a\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting:github
+[debug] [2026-06-29T01:08:04.175Z] CLI Version:   15.22.3
+[debug] [2026-06-29T01:08:04.176Z] Platform:      win32
+[debug] [2026-06-29T01:08:04.176Z] Node Version:  v22.19.0
+[debug] [2026-06-29T01:08:04.176Z] Detected Agent: unknown
+[debug] [2026-06-29T01:08:04.176Z] Time:          Sun Jun 28 2026 22:08:04 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-29T01:08:04.177Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Projetos\Portfólio\Magno Pizon\magno_pizon
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-06-29T01:08:09.261Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-29T01:08:09.261Z] > authorizing via signed-in user (ma9nojr@gmail.com)
+[debug] [2026-06-29T01:08:09.263Z] Checked if tokens are valid: true, expires at: 1782696669663
+[debug] [2026-06-29T01:08:09.264Z] Checked if tokens are valid: true, expires at: 1782696669663
+[debug] [2026-06-29T01:08:09.268Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/portfolio-magno-pizon [none]
+[debug] [2026-06-29T01:08:09.828Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/portfolio-magno-pizon 200
+[debug] [2026-06-29T01:08:09.829Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/portfolio-magno-pizon {"projectId":"portfolio-magno-pizon","projectNumber":"486172462613","displayName":"portfolio-magno-pizon","name":"projects/portfolio-magno-pizon","resources":{"hostingSite":"portfolio-magno-pizon"},"state":"ACTIVE","etag":"1_fc2ab4a5-1642-482d-8c54-c4689b6eae9e"}
+[info] i  Using project portfolio-magno-pizon (portfolio-magno-pizon) . 
+[info] 
+=== Hosting:github Setup
+[info] 
+[info] i  Detected a .git folder at D:\Projetos\Portfólio\Magno Pizon\magno_pizon\portfolio-musical 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=399418723&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2026-06-29T01:08:09.882Z] Error: spawn cmd ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-06-29T01:12:25.821Z] ----------------------------------------------------------------------
+[debug] [2026-06-29T01:12:25.824Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\a\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login:ci
+[debug] [2026-06-29T01:12:25.825Z] CLI Version:   15.22.3
+[debug] [2026-06-29T01:12:25.825Z] Platform:      win32
+[debug] [2026-06-29T01:12:25.825Z] Node Version:  v22.19.0
+[debug] [2026-06-29T01:12:25.826Z] Detected Agent: unknown
+[debug] [2026-06-29T01:12:25.826Z] Time:          Sun Jun 28 2026 22:12:25 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-29T01:12:25.826Z] ----------------------------------------------------------------------
+[debug] 
+[warn] !  Authenticating with a `login:ci` token is deprecated and will be removed in a future major version of `firebase-tools`. Instead, use a service account key with `GOOGLE_APPLICATION_CREDENTIALS`: https://cloud.google.com/docs/authentication/getting-started 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=961536668&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2026-06-29T01:12:26.274Z] Error: spawn cmd ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+[error] 
+[error] Error: An unexpected error has occurred.
