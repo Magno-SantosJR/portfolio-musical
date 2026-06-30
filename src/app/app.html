@@ -81,30 +81,436 @@
     </div>
   </section>
 
-  <!-- 3. VITRINE DE FORMATOS (Abaixo entraremos com a lógica das gavetas) -->
-  <section id="formatos" class="max-w-6xl mx-auto px-4 py-12 space-y-8">
+  <!-- 3. VITRINE DE FORMATOS (Gavetas de Portfólio) -->
+  <section id="formatos" class="max-w-6xl mx-auto px-4 py-16 space-y-8 relative z-10">
     <div class="text-center md:text-left">
       <h2 class="text-3xl font-black tracking-tight">Escolha o Seu <span class="text-amber-400">Formato</span></h2>
-      <p class="text-sm text-slate-400">Clique para expandir o portfólio, assistir aos teasers e simular.</p>
+      <p class="text-sm text-slate-400 mt-1">Clique em um formato para expandir o portfólio, assistir aos teasers e simular seu show.</p>
     </div>
 
     <!-- Grid de Encaixe dos 5 Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-      <!-- Os cards de gaveta estruturaremos em seguida com o estado dinâmico no Angular -->
-      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs text-slate-500 italic">Voz & Violão</div>
-      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs text-slate-500 italic">Pizon & Banda</div>
-      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs text-slate-500 italic">Banda Axé</div>
-      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs text-slate-500 italic">Outras Formações</div>
-      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs text-slate-500 italic">Grupo Ludah</div>
+      
+      <!-- Card 1: Voz & Violão -->
+      <button (click)="toggleGaveta('voz-violao')" 
+        [class.border-amber-500]="formatoAberto() === 'voz-violao'"
+        class="p-6 rounded-xl bg-slate-900 border border-slate-800 text-center hover:border-amber-500/50 hover:bg-slate-900/80 transition-all group flex flex-col items-center justify-center space-y-3 min-h-[160px]">
+        <div class="text-3xl group-hover:scale-110 transition-transform">
+          <img src="vozeviolaob.png" class="w-16 h-16" alt="">
+        </div>
+        <span class="font-bold text-slate-200 group-hover:text-amber-400 transition-colors">Voz & Violão</span>
+        <span class="text-xs text-slate-500">Intimista & Sofisticado</span>
+      </button>
+
+      <!-- Card 2: Pizon & Banda -->
+      <button (click)="toggleGaveta('pizon-banda')"
+        [class.border-amber-500]="formatoAberto() === 'pizon-banda'"
+        class="p-6 rounded-xl bg-slate-900 border border-slate-800 text-center hover:border-amber-500/50 hover:bg-slate-900/80 transition-all group flex flex-col items-center justify-center space-y-3 min-h-[160px]">
+        <div class="text-3xl group-hover:scale-110 transition-transform">
+          <img src="/star_wings-removebg-preview.png" class="w-30 h-20" alt="estrela com assas"/>
+        </div>
+        <span class="font-bold text-slate-200 group-hover:text-amber-400 transition-colors">Pizon & Banda</span>
+        <span class="text-xs text-slate-500">Pop Rock & Energia</span>
+      </button>
+
+      <!-- Card 3: Banda Axé -->
+      <button (click)="toggleGaveta('banda-axe')"
+        [class.border-amber-500]="formatoAberto() === 'banda-axe'"
+        class="p-6 rounded-xl bg-slate-900 border border-slate-800 text-center hover:border-amber-500/50 hover:bg-slate-900/80 transition-all group flex flex-col items-center justify-center space-y-3 min-h-[160px]">
+        <div class="text-3xl group-hover:scale-110 transition-transform">🥁</div>
+        <span class="font-bold text-slate-200 group-hover:text-amber-400 transition-colors">Banda Axé</span>
+        <span class="text-xs text-slate-500">Carnaval & Agito</span>
+      </button>
+
+      <!-- Card 4: Outras Formações -->
+      <button (click)="toggleGaveta('outras')"
+        [class.border-amber-500]="formatoAberto() === 'outras'"
+        class="p-6 rounded-xl bg-slate-900 border border-slate-800 text-center hover:border-amber-500/50 hover:bg-slate-900/80 transition-all group flex flex-col items-center justify-center space-y-3 min-h-[160px]">
+        <div class="text-3xl group-hover:scale-110 transition-transform">🎻</div>
+        <span class="font-bold text-slate-200 group-hover:text-amber-400 transition-colors">Outras Formações</span>
+        <span class="text-xs text-slate-500">Projetos Sob Consulta</span>
+      </button>
+
+      <!-- Card 5: Grupo Ludah -->
+      <a href="https://wa.me/seu-numero" target="_blank"
+        class="p-6 rounded-xl bg-slate-950 border border-slate-900 text-center hover:border-amber-500/30 hover:bg-slate-900/40 transition-all group flex flex-col items-center justify-center space-y-3 min-h-[160px] opacity-75">
+        <div class="text-3xl group-hover:scale-110 transition-transform">✨</div>
+        <span class="font-bold text-slate-400 group-hover:text-amber-500 transition-colors">Grupo Ludah</span>
+        <span class="text-xs text-slate-600">Eventos Corporativos</span>
+      </a>
+
+    </div>
+
+    <!-- CONTEÚDO EXPANSÍVEL DAS GAVETAS -->
+    <div class="transition-all duration-300">
+      
+      <!-- Gaveta 1: Voz & Violão -->
+      @if (formatoAberto() === 'voz-violao') {
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 space-y-6 animate-fadeIn">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-amber-400">Voz & Violão</h3>
+              <p class="text-xs text-slate-400">Repertório elegante passando por MPB, Pop Rock Nacional, Samba/Bossa e versões acústicas.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button (click)="selecionarFormatoNoSimulador('Voz & Violão')" class="px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold text-sm shadow-md hover:opacity-90 transition-all">
+                Solicitar Orçamento deste Formato
+              </button>
+              <a href="https://wa.me/seu-numero" target="_blank" class="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm hover:bg-slate-700 transition-colors">
+                Falar Direto no WhatsApp
+              </a>
+            </div>
+          </div>
+          <!-- Grade de Vídeos (Teasers Verticais) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Vertical Teaser 1]</div>
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Vertical Teaser 2]</div>
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Vertical Teaser 3]</div>
+          </div>
+        </div>
+      }
+
+      <!-- Gaveta 2: Pizon & Banda -->
+      @if (formatoAberto() === 'pizon-banda') {
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 space-y-6 animate-fadeIn">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-amber-400">Pizon & Banda</h3>
+              <p class="text-xs text-slate-400">Show enérgico e dançante com foco no melhor do Pop Rock nacional/internacional e clássicos de pista.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button (click)="selecionarFormatoNoSimulador('Pizon & Banda')" class="px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold text-sm shadow-md hover:opacity-90 transition-all">
+                Solicitar Orçamento deste Formato
+              </button>
+              <a href="https://wa.me/seu-numero" target="_blank" class="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm hover:bg-slate-700 transition-colors">
+                Falar Direto no WhatsApp
+              </a>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Banda Teaser 1]</div>
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Banda Teaser 2]</div>
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Banda Teaser 3]</div>
+          </div>
+        </div>
+      }
+
+      <!-- Gaveta 3: Banda Axé -->
+      @if (formatoAberto() === 'banda-axe') {
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 space-y-6 animate-fadeIn">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-amber-400">Banda Axé</h3>
+              <p class="text-xs text-slate-400">Micareta completa para o seu evento. Energia do carnaval baiano, blocos retrô e hits atuais.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button (click)="selecionarFormatoNoSimulador('Banda Axé')" class="px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold text-sm shadow-md hover:opacity-90 transition-all">
+                Solicitar Orçamento deste Formato
+              </button>
+              <a href="https://wa.me/seu-numero" target="_blank" class="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm hover:bg-slate-700 transition-colors">
+                Falar Direto no WhatsApp
+              </a>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Axé Teaser 1]</div>
+            <div class="aspect-[9/16] bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-600 italic">[Vídeo Axé Teaser 2]</div>
+          </div>
+        </div>
+      }
+
+      <!-- Gaveta 4: Outras Formações -->
+      @if (formatoAberto() === 'outras') {
+        <div class="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 space-y-6 animate-fadeIn">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-800 pb-4">
+            <div>
+              <h3 class="text-xl font-bold text-amber-400">Outras Formações Customizadas</h3>
+              <p class="text-xs text-slate-400">Duos, trios ou montagens instrumentais exclusivas adequadas ao perfil e cerimonial do evento.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button (click)="selecionarFormatoNoSimulador('Outras Formações')" class="px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold text-sm shadow-md hover:opacity-90 transition-all">
+                Iniciar Alinhamento Sob Medida
+              </button>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 italic">Formatos diferenciados montados sob consulta direta de acordo com a necessidade do projeto técnica ou artística.</p>
+        </div>
+      }
+
     </div>
   </section>
 
-  <!-- Espaço reservado para o Simulador -->
-  <section id="simulador" class="py-12 bg-slate-900/20 border-t border-slate-900">
-    <div class="max-w-3xl mx-auto px-4 text-center text-sm text-slate-600">
-      Área do Funil de Orçamento Dinâmico
+ <!-- 4. FLUXO DO SIMULADOR DINÂMICO DE ORÇAMENTO -->
+  <section id="simulador" class="py-20 bg-slate-900/30 border-t border-slate-900 relative z-10">
+    <div class="max-w-3xl mx-auto px-4">
+      
+      <div class="bg-slate-900 border border-slate-800/80 rounded-3xl p-6 md:p-10 shadow-2xl relative">
+        
+        <!-- Topo com Indicador Dinâmico de Preço Flutuante -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/60 pb-6 mb-6">
+          <div>
+            <h2 class="text-2xl font-black tracking-tight">Monte Seu <span class="text-amber-400">Show</span></h2>
+            <p class="text-xs text-slate-500 uppercase tracking-wider mt-1">Etapa {{ passoAtual() }} de 5</p>
+          </div>
+          @if (precoCalculado() > 0) {
+            <div class="bg-amber-500/10 border border-amber-500/20 px-4 py-2 rounded-xl text-right animate-fadeIn">
+              <span class="text-xs text-slate-400 block font-medium">Investimento Estimado</span>
+              <span class="text-xl font-black text-amber-400">R$ {{ precoCalculado() | number:'1.2-2' }}</span>
+            </div>
+          }
+        </div>
+
+        <form (submit)="enviarOrcamento($event)" class="space-y-6">
+          
+          <!-- PASSO 1: Escolha do Formato Base -->
+         @if (passoAtual() === 1) {
+            <div class="space-y-4 animate-fadeIn">
+              <label class="block text-base font-bold text-slate-200">Qual formato principal se encaixa no seu evento?</label>
+              <div class="grid grid-cols-1 gap-3">
+                <button type="button" (click)="formatoSelecionado.set('voz_e_violao'); proximoPasso()"
+                  class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-left hover:border-amber-500/40 transition-all flex items-center justify-between">
+                  <div>
+                    <p class="font-bold text-sm text-slate-200">Voz & Violão</p>
+                    <p class="text-xs text-slate-500">Formação acústica, refinada e intimista</p>
+                  </div>
+                  <span class="text-slate-600">→</span>
+                </button>
+                <button type="button" (click)="formatoSelecionado.set('banda_pop_rock_4_integrantes'); proximoPasso()"
+                  class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-left hover:border-amber-500/40 transition-all flex items-center justify-between">
+                  <div>
+                    <p class="font-bold text-sm text-slate-200">Pizon & Banda (Pop Rock)</p>
+                    <p class="text-xs text-slate-500">4 Integrantes, clássicos do Rock e hits de pista</p>
+                  </div>
+                  <span class="text-slate-600">→</span>
+                </button>
+                <button type="button" (click)="formatoSelecionado.set('banda_axe'); proximoPasso()"
+                  class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-left hover:border-amber-500/40 transition-all flex items-center justify-between">
+                  <div>
+                    <p class="font-bold text-sm text-slate-200">Banda Axé (Micareta Completa)</p>
+                    <p class="text-xs text-slate-500">Configuração flexível com percussão pesada de carnaval</p>
+                  </div>
+                  <span class="text-slate-600">→</span>
+                </button>
+                <a href="https://wa.me/seu-numero" target="_blank"
+                  class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-left hover:border-amber-500/40 transition-all flex items-center justify-between group">
+                  <div>
+                    <p class="font-bold text-sm text-slate-200 group-hover:text-amber-400 transition-colors">Grupo Ludah</p>
+                    <p class="text-xs text-slate-500">Formação premium para casamentos. Você será redirecionado para falar diretamente conosco.</p>
+                  </div>
+                  <span class="text-slate-600 group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+            </div>
+          }
+
+          <!-- PASSO 2: Tipo de Evento & Configurações de Tamanho de Banda -->
+          @if (passoAtual() === 2) {
+            <div class="space-y-6 animate-fadeIn">
+              <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-300">Qual o tipo ou perfil do seu evento?</label>
+                <select [value]="tipoEvento()" (change)="tipoEvento.set($any($event.target).value); duracaoShow.set('')"
+                  class="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-300 focus:border-amber-500 outline-none">
+                  <option value="">Selecione...</option>
+                  <option value="bar">Casas Noturnas / Bares / Show Público</option>
+                  <option value="aniversario">Aniversário / Festa Privada</option>
+                  <option value="corporativo">Evento Corporativo / Empresarial</option>
+                  <option value="casamento">Casamento (Cerimônia ou Recepção)</option>
+                </select>
+              </div>
+
+              <!-- Se escolher Banda Axé, abre a seleção de quantos integrantes -->
+              @if (formatoSelecionado() === 'banda_axe') {
+                <div class="space-y-3 pt-2">
+                  <label class="block text-sm font-bold text-slate-300">Selecione o tamanho da formação do Axé:</label>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <button type="button" (click)="subFormatoAxe.set('banda_axe_6_integrantes')"
+                      [class.border-amber-500]="subFormatoAxe() === 'banda_axe_6_integrantes'"
+                      class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs font-semibold text-slate-300">
+                      6 Integrantes (Compacta)
+                    </button>
+                    <button type="button" (click)="subFormatoAxe.set('banda_axe_8_integrantes')"
+                      [class.border-amber-500]="subFormatoAxe() === 'banda_axe_8_integrantes'"
+                      class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs font-semibold text-slate-300">
+                      8 Integrantes (Premium)
+                    </button>
+                    <button type="button" (click)="subFormatoAxe.set('banda_axe_11_integrantes')"
+                      [class.border-amber-500]="subFormatoAxe() === 'banda_axe_11_integrantes'"
+                      class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs font-semibold text-slate-300">
+                      11 Integrantes (Estrutura Trio)
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          <!-- PASSO 3: Tempo de Duração OU Especificidades de Casamento -->
+          @if (passoAtual() === 3) {
+            <div class="space-y-6 animate-fadeIn">
+              
+              <!-- Se for Voz e Violão E Casamento -> Abre Matriz Especial de Cerimônia/Coquetel -->
+              @if (formatoSelecionado() === 'voz_e_violao' && tipoEvento() === 'casamento') {
+                <div class="space-y-4">
+                  <div class="space-y-2">
+                    <label class="block text-sm font-bold text-slate-300">Momento da Atuação:</label>
+                    <div class="grid grid-cols-2 gap-3">
+                      <button type="button" (click)="casamentoMomento.set('cerimonia')"
+                        [class.border-amber-500]="casamentoMomento() === 'cerimonia'"
+                        class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-sm font-medium text-slate-200">
+                        Cerimônia
+                      </button>
+                      <button type="button" (click)="casamentoMomento.set('coquetel_recepcao')"
+                        [class.border-amber-500]="casamentoMomento() === 'coquetel_recepcao'"
+                        class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-sm font-medium text-slate-200">
+                        Coquetel / Recepção
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="block text-sm font-bold text-slate-300">Formação Artística:</label>
+                    <div class="grid grid-cols-2 gap-3">
+                      <button type="button" (click)="casamentoFormacao.set('solo_violao')"
+                        [class.border-amber-500]="casamentoFormacao() === 'solo_violao'"
+                        class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-sm font-medium text-slate-200">
+                        Solo (Apenas Violão/Voz)
+                      </button>
+                      <button type="button" (click)="casamentoFormacao.set('duo')"
+                        [class.border-amber-500]="casamentoFormacao() === 'duo'"
+                        class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-sm font-medium text-slate-200">
+                        Duo Executivo (+1 Músico)
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              } @else {
+                <!-- Fluxo Normal de Tempo -->
+                <div class="space-y-3">
+                  <label class="block text-base font-bold text-slate-200">Qual a estimativa de duração do show?</label>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <button type="button" (click)="duracaoShow.set('1h')" [class.border-amber-500]="duracaoShow() === '1h'" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center text-sm font-semibold text-slate-200">1 Hora</button>
+                    <button type="button" (click)="duracaoShow.set('2h')" [class.border-amber-500]="duracaoShow() === '2h'" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center text-sm font-semibold text-slate-200">2 Horas</button>
+                    <button type="button" (click)="duracaoShow.set('2h30')" [class.border-amber-500]="duracaoShow() === '2h30'" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center text-sm font-semibold text-slate-200">2h 30min</button>
+                    <button type="button" (click)="duracaoShow.set('3h')" [class.border-amber-500]="duracaoShow() === '3h'" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center text-sm font-semibold text-slate-200">3 Horas</button>
+                  </div>
+                </div>
+              }
+
+              <!-- Gêneros se for Voz & Violão -->
+              @if (formatoSelecionado() === 'voz_e_violao') {
+                <div class="space-y-3 pt-2">
+                  <label class="block text-sm font-bold text-slate-300">Estilos Musicais Desejados (Seleção Múltipla):</label>
+                  <div class="grid grid-cols-2 gap-2">
+                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-950 border border-slate-800/80 cursor-pointer"><input type="checkbox" (change)="onGeneroCheckboxChange('MPB', $event)" class="rounded text-amber-500"><span class="text-xs text-slate-300">MPB</span></label>
+                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-950 border border-slate-800/80 cursor-pointer"><input type="checkbox" (change)="onGeneroCheckboxChange('Pop Rock', $event)" class="rounded text-amber-500"><span class="text-xs text-slate-300">Pop Rock</span></label>
+                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-950 border border-slate-800/80 cursor-pointer"><input type="checkbox" (change)="onGeneroCheckboxChange('Samba/Bossa', $event)" class="rounded text-amber-500"><span class="text-xs text-slate-300">Samba / Bossa</span></label>
+                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-950 border border-slate-800/80 cursor-pointer"><input type="checkbox" (change)="onGeneroCheckboxChange('Forró', $event)" class="rounded text-amber-500"><span class="text-xs text-slate-300">Forró</span></label>
+                    <label class="flex items-center gap-3 p-3 rounded-lg bg-slate-950 border border-slate-800/80 cursor-pointer"><input type="checkbox" (change)="onGeneroCheckboxChange('Axé Acústico', $event)" class="rounded text-amber-500"><span class="text-xs text-slate-300">Axé Acústico</span></label>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          <!-- PASSO 4: Infraestrutura de Som & Data (Sazonalidade) -->
+          @if (passoAtual() === 4) {
+            <div class="space-y-6 animate-fadeIn">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label class="block text-sm font-bold text-slate-300">Público Estimado (Estrutura de PA):</label>
+                  <select [value]="quantidadePessoas()" (change)="quantidadePessoas.set($any($event.target).value)"
+                    class="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 outline-none">
+                    <option value="ate_60_pessoas">Até 60 Pessoas</option>
+                    <option value="ate_100_pessoas">Até 100 Pessoas</option>
+                    <option value="ate_200_pessoas">Até 200 Pessoas</option>
+                  </select>
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-sm font-bold text-slate-300">O local do evento é:</label>
+                  <select [value]="tipoAmbiente()" (change)="tipoAmbiente.set($any($event.target).value)"
+                    class="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 outline-none">
+                    <option value="fechado">Ambiente Fechado (Salão/Climatizado)</option>
+                    <option value="aberto">Ambiente Aberto / Ao Ar Livre</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-300">Data Prevista (Checagem de Sazonalidade/Agenda):</label>
+                <input type="date" [value]="dataEvento()" (input)="dataEvento.set($any($event.target).value)"
+                  class="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 outline-none focus:border-amber-500">
+                <p class="text-[10px] text-slate-500 italic">Notas: Datas festivas ou mês de Dezembro possuem acréscimos automáticos na tabela.</p>
+              </div>
+            </div>
+          }
+
+          <!-- PASSO 5: Contato Final -->
+          @if (passoAtual() === 5) {
+            <div class="space-y-4 animate-fadeIn">
+              <div class="space-y-1">
+                <label class="block text-lg font-bold text-slate-200">Para onde enviamos a sua proposta formal?</label>
+                <p class="text-xs text-slate-500">Insira suas informações finais para registrar o bloqueio preventivo da data.</p>
+              </div>
+              <div class="space-y-3">
+                <input type="text" placeholder="Seu Nome Completo" required [value]="nomeCliente()" (input)="nomeCliente.set($any($event.target).value)" class="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-200 outline-none">
+                <input type="tel" placeholder="WhatsApp com DDD" required [value]="whatsappCliente()" (input)="whatsappCliente.set($any($event.target).value)" class="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-200 outline-none">
+                <input type="email" placeholder="E-mail de Contato" required [value]="emailCliente()" (input)="emailCliente.set($any($event.target).value)" class="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-slate-200 outline-none">
+              </div>
+            </div>
+          }
+
+          <!-- Controles de Rodapé -->
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800/60 mt-6">
+            @if (passoAtual() > 1) {
+              <button type="button" (click)="passoAnterior()" class="px-5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm font-semibold text-slate-400 hover:text-white transition-colors">Voltar</button>
+            } @else { <div></div> }
+
+            @if (passoAtual() > 1 && passoAtual() < 5) {
+              <button type="button" (click)="proximoPasso()" [disabled]="(passoAtual() === 2 && !tipoEvento())" class="px-6 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm font-bold text-slate-200 hover:bg-slate-700 disabled:opacity-40 transition-all">Avançar</button>
+            } @else if (passoAtual() === 5) {
+              <button type="submit" [disabled]="!nomeCliente() || !whatsappCliente() || !emailCliente()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 text-slate-950 font-extrabold text-sm uppercase tracking-wider shadow-lg hover:opacity-95 disabled:opacity-40 transition-all">
+                Reservar Data com {{ nomeFormatadoFormato() }}
+              </button>
+            }
+          </div>
+
+        </form>
+      </div>
     </div>
   </section>
+
+  <!-- 5. POP-UP / MODAL DE AGRADECIMENTO (PÓS-ENVIO) -->
+  @if (exibirModalSucesso()) {
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md animate-fadeIn">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 max-w-md w-full text-center space-y-6 shadow-2xl">
+        <div class="w-16 h-16 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full flex items-center justify-center text-3xl mx-auto animate-bounce">
+          🎉
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-2xl font-black tracking-tight text-white">Tudo pronto, Obrigado!</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            O seu pedido de reserva de data para o formato <span class="text-amber-400 font-bold">{{ formatoSelecionado() }}</span> foi enviado com sucesso para a nossa equipe.
+          </p>
+        </div>
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/60 text-left space-y-2">
+          <p class="text-xs font-bold uppercase text-slate-500 tracking-wider">📱 O que acontece agora?</p>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Estamos analisando a disponibilidade da sua data em nossa agenda. Em instantes, você receberá uma mensagem de confirmação diretamente no seu WhatsApp.
+          </p>
+        </div>
+        <div class="flex flex-col gap-2 pt-2">
+          <a href="https://wa.me/seu-numero" target="_blank"
+            class="w-full px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold text-sm text-center hover:bg-emerald-500 shadow-md shadow-emerald-600/10 transition-all">
+            Falar com o Magno no WhatsApp Agora
+          </a>
+          <button (click)="fecharModalSucesso()"
+            class="w-full px-6 py-2.5 rounded-xl bg-slate-800 text-slate-400 font-medium text-xs hover:text-white transition-colors">
+            Fechar Janela
+          </button>
+        </div>
+      </div>
+    </div>
+  }
 
   <router-outlet></router-outlet>
 </div>
